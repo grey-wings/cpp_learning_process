@@ -20,7 +20,7 @@ typedef set<int> SETINT;
 2.list
 typedef list<int> LISTINT;
 LISTINT sb;
-LISTINT ::iterator i;(迭代器)
+LISTINT ::iterator iter;(迭代器)
 
 /* 算法 */
 1.二分
@@ -89,20 +89,20 @@ string add(string str1,string str2)//高精度加法
     //前面补0，弄成长度相同
     if(len1<len2)
     {
-        for(int i=1;i<=len2-len1;i++)
+        for(int kk=1;kk<=len2-len1;kk++)
             str1="0"+str1;
     }
     else
     {
-        for(int i=1;i<=len1-len2;i++)
+        for(int kk=1;kk<=len1-len2;kk++)
             str2="0"+str2;
     }
     len1=str1.length();
     int cf=0;
     int temp;
-    for(int i=len1-1;i>=0;i--)
+    for(int kk=len1-1;kk>=0;kk--)
     {
-        temp=str1[i]-'0'+str2[i]-'0'+cf;
+        temp=str1[kk]-'0'+str2[kk]-'0'+cf;
         cf=temp/10;
         temp%=10;
         str=char(temp+'0')+str;
@@ -117,29 +117,29 @@ string sub(string str1,string str2)//高精度减法
     string str;
     int tmp=str1.length()-str2.length();
     int cf=0;
-    for(int i=str2.length()-1;i>=0;i--)
+    for(int kk=str2.length()-1;kk>=0;kk--)
     {
-        if(str1[tmp+i]<str2[i]+cf)
+        if(str1[tmp+kk]<str2[kk]+cf)
         {
-            str=char(str1[tmp+i]-str2[i]-cf+'0'+10)+str;
+            str=char(str1[tmp+kk]-str2[kk]-cf+'0'+10)+str;
             cf=1;
         }
         else
         {
-            str=char(str1[tmp+i]-str2[i]-cf+'0')+str;
+            str=char(str1[tmp+kk]-str2[kk]-cf+'0')+str;
             cf=0;
         }
     }
-    for(int i=tmp-1;i>=0;i--)
+    for(int kk=tmp-1;kk>=0;kk--)
     {
-        if(str1[i]-cf>='0')
+        if(str1[kk]-cf>='0')
         {
-            str=char(str1[i]-cf)+str;
+            str=char(str1[kk]-cf)+str;
             cf=0;
         }
         else
         {
-            str=char(str1[i]-cf+10)+str;
+            str=char(str1[kk]-cf+10)+str;
             cf=1;
         }
     }
@@ -154,20 +154,20 @@ string mul(string str1,string str2)
     int len1=str1.length();
     int len2=str2.length();
     string tempstr;
-    for(int i=len2-1;i>=0;i--)
+    for(int kk=len2-1;kk>=0;kk--)
     {
         tempstr="";
-        int temp=str2[i]-'0';
+        int temp=str2[kk]-'0';
         int t=0;
         int cf=0;
         if(temp!=0)
         {
-            for(int j=1;j<=len2-1-i;j++)
+            for(int jj=1;jj<=len2-1-kk;jj++)
               tempstr+="0";
-            for(int j=len1-1;j>=0;j--)
+            for(int jj=len1-1;jj>=0;jj--)
             {
-                t=(temp*(str1[j]-'0')+cf)%10;
-                cf=(temp*(str1[j]-'0')+cf)/10;
+                t=(temp*(str1[jj]-'0')+cf)%10;
+                cf=(temp*(str1[jj]-'0')+cf)/10;
                 tempstr=char(t+'0')+tempstr;
             }
             if(cf!=0) tempstr=char(cf+'0')+tempstr;
@@ -212,9 +212,9 @@ void div(string str1,string str2,string &quotient,string &residue)
         int len2=str2.length();
         string tempstr;
         tempstr.append(str1,0,len2-1);
-        for(int i=len2-1;i<len1;i++)
+        for(int ii=len2-1;ii<len1;ii++)
         {
-            tempstr=tempstr+str1[i];
+            tempstr=tempstr+str1[ii];
             tempstr.erase(0,tempstr.find_first_not_of('0'));
             if(tempstr.empty())
               tempstr="0";
