@@ -236,3 +236,18 @@ void div(string str1,string str2,string &quotient,string &residue)
     quotient.erase(0,quotient.find_first_not_of('0'));
     if(quotient.empty()) quotient="0";
 }
+4.关于2的次方
+unsigned twon(unsigned x)
+{
+    return 1<<x;
+}
+int log2(int x)
+{
+    int n=0;
+    while (x>1)
+    {
+        n++;
+        x=x>>1;
+    }
+    return n;
+}
