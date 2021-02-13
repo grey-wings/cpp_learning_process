@@ -24,45 +24,32 @@ LISTINT ::iterator iter;(迭代器)
 
 /* 算法 */
 1.二分
-二分模板1:(由中间向下取)
-//注意!最后输出的l并不一定在初始的l-r之间,即最终的l可以>r!!
-//多少多
-int l=0,mid,r=n;
-bool can(int x)
+二分模板1:最大值最小化问题
+while(l<r)
 {
-    int num=0;
-    fun(i)num+=max((int)0,a[i]-x);
-    return num>=m;
+    int mid=(l+r)>>1;
+    if(check(mid))
+    {
+        r=mid;
+    }
+    else
+    {
+        l=mid+1;
+    }
 }
-while(l<=r)
+二分模板2:最小值最大化问题
+while(l<r)
 {
-mid=(l+r)/2;
-//mid=l+r>>1;
-if(can(mid))//答案在中间以下
-{
-r=mid-1;
-}else{
-l=mid+1;
+    int mid=(l+r+1)>>1;
+    if(check(mid))
+    {
+        l=mid;
+    }
+    else
+    {
+        r=mid-1;
+    }
 }
-}
-cout<<l;
-
-r多（多少多）l少（少多少）
-即r>l
-
-//少多少
-二分模板2:
-//注意!最后二分出的l并不一定在初始的l-r之间,即最终的l可以>r!!
-//所以如果要判断l是否合理还要加上 if(l<=begin_r && can(l))..
-int l=0,mid,r=n;//注意,此时r不能=LLONG_MAX,因为下面会加一爆出去,所以最多LLONG_MAX-1;
-while (l < r)
-{
-mid = l + r + 1 >> 1;
-if (can(mid)) l = mid;//答案在中间以上,即第一个满足条件的传入值
-else r = mid - 1;
-}
-cout<<l;
-
 2.树状数组
 计算a[x]管理几个数
 int lowbit(int x)
@@ -250,4 +237,29 @@ int log2(int x)
         x=x>>1;
     }
     return n;
+}
+5.最大公约数和最小公倍数
+int gcd(int mmm,int nnn)
+{
+    if(nnn==0) return mmm;
+    return gcd(nnn,mmm%nnn);
+}
+最大公约数*最小公倍数=原数乘积
+6.并查集（路径压缩）
+参考：https://zhuanlan.zhihu.com/p/93647900/
+typedef struct
+{
+    int father,rank;
+}tree;
+tree a[5002];
+int find(int index)
+{
+    //返回a[index]所在这棵树的根节点
+    //三目运算符优先级比赋值高，赋值语句要加括号
+    return (a[index].father==index)?index:(a[index].father=find(a[index].father));
+}
+void merge(int x1,int x2)
+{
+    //x1所在的树和x2所在的树合并
+    a[find(x2)].father=find(x1);
 }
