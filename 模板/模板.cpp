@@ -241,7 +241,7 @@ int log2(int x)
     return n;
 }
 5.最大公约数和最小公倍数
-int gcd(int mmm,int nnn)
+int gcd(ll mmm,ll nnn)
 {
     if(nnn==0) return mmm;
     return gcd(nnn,mmm%nnn);
