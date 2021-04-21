@@ -7,6 +7,8 @@
 #define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define all(V) V.begin(),V.end()
 #define print(i) cout<<(i)<<endl;
+#define ll long long
+#define ull unsigned long long
 
 /* 定义 */
 typedef queue<int> QUEUEINT;
