@@ -265,3 +265,15 @@ void merge(int x1,int x2)
     //x1所在的树和x2所在的树合并
     a[find(x2)].father=find(x1);
 }
+
+
+
+6.文件读入
+#ifdef ONLINE_JUDGE
+#else
+    freopen("in.txt","r",stdin);
+#endif
+    // 如果是网络测评系统，就什么都不干
+    // 如果不是（比如本地），就从in.txt文件读
+    // 这种方法用于处理不知道有多少个输入时的情况，采用while(cin >> ch)//ch是接收输入的变量
+    // 来对输入进行读取和处理
