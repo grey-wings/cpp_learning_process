@@ -4,7 +4,7 @@
 https://www.cnblogs.com/dusf/p/kmp.html  
 https://blog.csdn.net/v_july_v/article/details/7041827  
 
-## 一些理解  
+## 一、关于kmp算法的一些理解  
 ### 1. i和j指针的定义  
 i指向主串中的某个字符，j指向模式串中的某个字符。  
 ![](https://images0.cnblogs.com/blog/416010/201308/17083647-9dfd3e4a709c40dd98d9817927651960.png)  
@@ -56,5 +56,66 @@ j只能移到0，即next[1]=0
 如果P[next[k]] == P[j]，那么P[0 ~ j]的最长相等前后缀的长度就是next[k] + 1，否则就继续往前找。  
 如果找不到这个k'，那么next[j + 1]就等于0  
 
-
-### 4. kmp
+## 二、题解
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define fu(i,r,t) for(int i=r;i<=t;i++)
+#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define all(V) V.begin(),V.end()
+#define print(i) cout<<(i)<<endl;
+#define ll long long
+#define ull unsigned long long
+class Solution {
+public:
+    static void getNext(const string& s, int* next){
+        // 计算某个字符对应的next值，就是看这个字符之前的字符串中有多大长度的相同前缀后缀。
+        // 默认next长度大于2，在下面的程序中长度为1和0的情况已经被处理了。
+        next[0] = -1;next[1] = 0;
+        // 因为next[j]求的是0 ~ (j-1)之间的字符串的最长相等前后缀
+        // 所以i从1循环到s.length() - 1
+        for (int i = 1;i < s.length() - 1;i++){
+            int k = next[i];
+            while (k >= 0 and s[k] != s[i])
+                k = next[k];
+            next[i + 1] = k + 1;
+        }
+    }
+    int strStr(string haystack, string needle) {
+        if (needle == haystack)
+            return 0;
+        if (needle.length() >= haystack.length())
+            return -1;
+        if (needle.length() == 0)
+            return 0;
+        if (needle.length() == 1){
+            int x = haystack.find(needle[0]);
+            return (x == std::string::npos) ? -1 : x;
+        }
+        int next[needle.length()];
+        getNext(needle, next);
+        int i = 0, j = 0;
+        while (i < haystack.length() and j < needle.length()){
+            if (haystack[i] == needle[j]){
+                i++;
+                j++;
+            }
+            else if (j == 0)
+                i++;
+            else
+                j = next[j];
+        }
+        if (j == needle.length())
+            return i - j;
+        else
+            return -1;
+    }
+};
+int main() {
+    string haystack, needle;
+    cin >> haystack >> needle;
+    Solution sl;
+    cout << sl.strStr(haystack, needle);
+    return 0;
+}
+```
