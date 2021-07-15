@@ -119,7 +119,8 @@ int main() {
     return 0;
 }
 ```
-关于结束时的判定
-![](https://user-images.githubusercontent.com/74122331/125785968-16364db2-41e3-48ed-87ec-9b9af70eacec.png)
-![](https://user-images.githubusercontent.com/74122331/125786223-c703e2e8-6738-481c-8120-698a55365b7e.png)
+关于结束时的判定  
+![](https://user-images.githubusercontent.com/74122331/125785968-16364db2-41e3-48ed-87ec-9b9af70eacec.png)  
+![](https://user-images.githubusercontent.com/74122331/125786223-c703e2e8-6738-481c-8120-698a55365b7e.png)  
+![image](https://user-images.githubusercontent.com/74122331/125788582-09970df0-05e6-45a8-b1cf-a3c1fba9778c.png)  
 
