@@ -27,9 +27,13 @@ i指向主串中的某个字符，j指向模式串中的某个字符。
 ![](https://images0.cnblogs.com/blog/416010/201308/17084037-cc3c34200809414e9421c316ceba2cda.png)  
 
 ### 3. Next数组
-1. 当j为0时，不匹配  
+#### 1. 当j为0时，不匹配  
 ![](https://images0.cnblogs.com/blog/416010/201308/17084258-efd2e95d3644427ebc0304ed3d7adefb.png)  
 j已经在最左边了，不可能再移动了，这时候要应该是i指针后移。所以next[0]=-1  
-2. j为1，不匹配  
+#### 2. j为1，不匹配  
 ![](https://images0.cnblogs.com/blog/416010/201308/17084310-29f9f8dbb6034151a383e7ccf6f5583e.png)  
 j只能移到0，即next[1]=0  
+#### 3. 匹配的情况
+![](https://images0.cnblogs.com/blog/416010/201308/17084327-8a3cdfab03094bfa9e5cace26796cae5.png)![](https://images0.cnblogs.com/blog/416010/201308/17084342-616036472ab546c082aa991004bb0034.png)  
+当P[k] == P[j]时，有next[j+1] == next[j] + 1  
+#### 4. 一般不匹配情况
