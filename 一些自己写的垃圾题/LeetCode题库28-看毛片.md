@@ -41,5 +41,5 @@ j只能移到0，即next[1]=0
 ![](https://images0.cnblogs.com/blog/416010/201308/17122358-fd7e52dd382c4268a8ff52b85bff465d.png)  
 k = next[k]  
 
-解释：  
+#### 解释：  
 
