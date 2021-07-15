@@ -36,5 +36,10 @@ j只能移到0，即next[1]=0
 #### 3. 匹配的情况
 ![](https://images0.cnblogs.com/blog/416010/201308/17084327-8a3cdfab03094bfa9e5cace26796cae5.png)![](https://images0.cnblogs.com/blog/416010/201308/17084342-616036472ab546c082aa991004bb0034.png)  
 当P[k] == P[j]时，有next[j+1] == next[j] + 1  
-#### 4. 一般不匹配情况
+#### 4. 一般不匹配情况  
+像下面这种情况
+![](https://images0.cnblogs.com/blog/416010/201308/17122358-fd7e52dd382c4268a8ff52b85bff465d.png)  
+k = next[k]  
+
+解释：  
 
