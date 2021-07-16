@@ -2,6 +2,14 @@
 
 单调栈解法：  
 ```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define fu(i,r,t) for(int i=r;i<=t;i++)
+#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define all(V) V.begin(),V.end()
+#define print(i) cout<<(i)<<endl;
+#define ll long long
+#define ull unsigned long long
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -32,4 +40,17 @@ public:
         return ans;
     }
 };
+int main() {
+    Solution sl;
+
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0;i < n;i++){
+        cin >> a[i];
+    }
+    cout << sl.maxProfit(a);
+    return 0;
+}
+
 ```
