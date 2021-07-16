@@ -1,4 +1,4 @@
-[买卖股票的最佳时机（单次）](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)  
+[题目链接：买卖股票的最佳时机（单次）](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)  
 
 单调栈解法：  
 ```cpp
