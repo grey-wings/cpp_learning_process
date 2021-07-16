@@ -5,6 +5,7 @@
 如果prices[i] < bottom，则从prices[i]开始买入，有可能有更大的收益。  
 当然也有可能没有，所以要记录下当前的最大收益，然后才能清空栈。  
 当bottom < prices[i] < a.top()时，不需要什么操作。因为假设后面在任意price[j]处卖出，在bottom处买入的收益肯定比在price[i]处买入的收益大。  
+代码如下：
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -58,3 +59,10 @@ int main() {
 }
 
 ```
+
+[题目链接：买卖股票的最佳时机（多次）](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)  
+
+有上题的铺垫，解法并不难想。  
+遍历一遍prices数组，当prices[i]比prices[i - 1]小的时候，那么就应当在i - 1处卖出，在i处买入。  
+即寻找这个数组中所有的单调连续增区间。  
+代码如下：
