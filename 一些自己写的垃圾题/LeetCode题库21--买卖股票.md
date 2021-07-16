@@ -1,6 +1,10 @@
 [题目链接：买卖股票的最佳时机（单次）](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)  
 
 单调栈解法：  
+单调栈栈底到栈顶递增。用当前读到的prices[i]和a.top()比较，如果prices[i] > a.top()，则有可能卖出更高的价格；  
+如果prices[i] < bottom，则从prices[i]开始买入，有可能有更大的收益。  
+当然也有可能没有，所以要记录下当前的最大收益，然后才能清空栈。  
+当bottom < prices[i] < a.top()时，不需要什么操作。因为假设后面在任意price[j]处卖出，在bottom处买入的收益肯定比在price[i]处买入的收益大。  
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
