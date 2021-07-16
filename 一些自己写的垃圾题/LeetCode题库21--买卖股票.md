@@ -66,3 +66,41 @@ int main() {
 遍历一遍prices数组，当prices[i]比prices[i - 1]小的时候，那么就应当在i - 1处卖出，在i处买入。  
 即寻找这个数组中所有的单调连续增区间。  
 代码如下：
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define fu(i,r,t) for(int i=r;i<=t;i++)
+#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define all(V) V.begin(),V.end()
+#define print(i) cout<<(i)<<endl;
+#define ll long long
+#define ull unsigned long long
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if (prices.empty() or prices.size() == 1)
+            return 0;
+        int ans = 0, buy = prices[0];
+        for (int i = 1;i < prices.size();i++){
+            if (prices[i] < prices[i - 1]){
+                ans += prices[i - 1] - buy;
+                buy = prices[i];
+            }
+        }
+        ans += prices[prices.size() - 1] - buy;
+        return ans;
+    }
+};
+int main() {
+    Solution sl;
+
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0;i < n;i++){
+        cin >> a[i];
+    }
+    cout << sl.maxProfit(a);
+    return 0;
+}
+```
