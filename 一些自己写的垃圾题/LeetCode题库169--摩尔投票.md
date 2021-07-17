@@ -12,3 +12,21 @@
 如果减完以后major等于0，说明已经遍历过的选民全部同归于尽，就可以把这部分已经遍历过的数组去掉。  
 那么major就选下一个遍历到的数组值。  
 
+代码如下：  
+```cpp
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int major = nums[0], count = 1;
+        for (int i = 1;i < nums.size();i++){
+            if (count == 0)
+                major = nums[i];
+            if (major == nums[i])
+                count++;
+            else
+                count--;
+        }
+        return major;
+    }
+};
+```
